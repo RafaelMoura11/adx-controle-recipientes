@@ -13,7 +13,7 @@
 <?php if (isset($usuario_logado)): ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="<?php echo site_url('dashboard'); ?>">
+		<a class="navbar-brand" href="<?php echo site_url($usuario_logado->tipo_usuario === 'motorista' ? 'motorista' : 'dashboard'); ?>">
 			<i class="bi bi-box-seam"></i> Controle de Recipientes
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
@@ -21,11 +21,15 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarMain">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<?php if ($usuario_logado->tipo_usuario === 'motorista'): ?>
+				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('motorista'); ?>">Meus destinos</a></li>
+				<?php else: ?>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('recipientes'); ?>">Recipientes</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('saidas'); ?>">Saidas</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('entradas'); ?>">Entradas</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('rotas'); ?>">Rotas</a></li>
+				<?php endif; ?>
 				<?php if ($usuario_logado->tipo_usuario === 'administrador'): ?>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('usuarios'); ?>">Usuarios</a></li>
 				<li class="nav-item dropdown">

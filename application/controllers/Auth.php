@@ -43,7 +43,7 @@ class Auth extends CI_Controller {
 							'usuario_nome' => $usuario->nome,
 							'usuario_tipo' => $usuario->tipo_usuario,
 						));
-						redirect('dashboard');
+						redirect($usuario->tipo_usuario === 'motorista' ? 'motorista' : 'dashboard');
 					}
 				}
 				else
