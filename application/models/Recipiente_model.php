@@ -114,7 +114,7 @@ class Recipiente_model extends CI_Model {
 				motorista.nome AS motorista_nome,
 				registrou.nome AS registrado_por,
 				saida_itens.status_item
-			")
+			", FALSE)
 			->from('saida_itens')
 			->join('saidas', 'saidas.id = saida_itens.saida_id')
 			->join('pontos_entrega', 'pontos_entrega.id = saida_itens.ponto_entrega_id')
@@ -131,7 +131,7 @@ class Recipiente_model extends CI_Model {
 				motorista.nome AS motorista_nome,
 				registrou.nome AS registrado_por,
 				NULL AS status_item
-			")
+			", FALSE)
 			->from('entrada_itens')
 			->join('entradas', 'entradas.id = entrada_itens.entrada_id')
 			->join('usuarios AS registrou', 'registrou.id = entradas.usuario_registrou_id')
