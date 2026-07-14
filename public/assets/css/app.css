@@ -1,0 +1,12 @@
+body {
+	min-height: 100vh;
+}
+
+.card-kpi .display-6 {
+	font-weight: 600;
+}
+
+.qr-scan-preview {
+	max-width: 320px;
+	margin: 0 auto;
+}
