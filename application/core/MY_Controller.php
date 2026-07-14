@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
+ * CI3 so carrega automaticamente application/core/MY_Controller.php (este
+ * arquivo). Outras classes base ficam em arquivos separados por clareza,
+ * mas precisam ser explicitamente requeridas aqui.
+ */
+require_once __DIR__.'/API_Controller.php';
+
+/**
  * Base para qualquer tela do painel que exija usuario autenticado e ativo.
  */
 class Auth_Controller extends CI_Controller {

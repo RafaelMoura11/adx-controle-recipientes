@@ -56,3 +56,11 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['dashboard'] = 'dashboard';
+
+// API REST (JSON + Basic Auth) - roteamento por verbo HTTP
+$route['api/saidas']['post'] = 'api/saidas/store';
+$route['api/saidas/(:num)']['get'] = 'api/saidas/show/$1';
+$route['api/entradas']['post'] = 'api/entradas/store';
+$route['api/entradas/(:num)']['get'] = 'api/entradas/show/$1';
+$route['api/recipientes']['get'] = 'api/recipientes/index';
+$route['api/recipientes/(:any)']['get'] = 'api/recipientes/show/$1';
