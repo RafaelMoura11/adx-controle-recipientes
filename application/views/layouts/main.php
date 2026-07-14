@@ -48,6 +48,12 @@
 <?php endif; ?>
 
 <div class="container-fluid px-4 pb-5">
+	<?php if ($this->session->flashdata('sucesso')): ?>
+		<div class="alert alert-success"><?php echo htmlspecialchars($this->session->flashdata('sucesso')); ?></div>
+	<?php endif; ?>
+	<?php if ($this->session->flashdata('erro')): ?>
+		<div class="alert alert-danger"><?php echo htmlspecialchars($this->session->flashdata('erro')); ?></div>
+	<?php endif; ?>
 	<?php echo $conteudo_html; ?>
 </div>
 
