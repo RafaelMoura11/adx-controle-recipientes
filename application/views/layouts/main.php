@@ -61,6 +61,27 @@
 	<?php echo $conteudo_html; ?>
 </div>
 
+<?php if (isset($usuario_logado) && $usuario_logado->tipo_usuario !== 'motorista'): ?>
+<div class="modal fade" id="modal-qr-scanner" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Escanear QR Code</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+			<div class="modal-body">
+				<div id="qr-scanner-reader" class="qr-scan-preview"></div>
+				<p class="text-muted small mt-2 mb-0">Aponte a camera para o QR Code do recipiente.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php if (isset($usuario_logado) && $usuario_logado->tipo_usuario !== 'motorista'): ?>
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="<?php echo base_url('assets/js/qr-scanner.js'); ?>"></script>
+<?php endif; ?>
 </body>
 </html>
