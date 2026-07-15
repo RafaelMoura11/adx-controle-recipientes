@@ -12,13 +12,20 @@ class Recipientes extends Operador_Controller {
 		$this->load->model('Recipiente_model');
 	}
 
+	const POR_PAGINA = 10;
+
 	public function index()
 	{
-		$status = $this->input->get('status', TRUE);
+		$status = $this->input->get('status', TRUE) ?: NULL;
+		$pagina_atual = max(1, (int) $this->input->get('pagina', TRUE));
+		$total = $this->Recipiente_model->contar($status);
+
+		$this->pagination->initialize(montar_config_paginacao(current_url(), $total, self::POR_PAGINA));
 
 		render_page('recipientes/index', array(
-			'recipientes' => $this->Recipiente_model->all($status ?: NULL),
+			'recipientes' => $this->Recipiente_model->all($status, self::POR_PAGINA, ($pagina_atual - 1) * self::POR_PAGINA),
 			'status_filtro' => $status,
+			'links_paginacao' => $this->pagination->create_links(),
 		));
 	}
 

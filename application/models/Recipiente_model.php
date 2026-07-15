@@ -15,13 +15,31 @@ class Recipiente_model extends CI_Model {
 		return $this->db->where('codigo', $codigo)->get($this->table)->row();
 	}
 
-	public function all($status = NULL)
+	public function all($status = NULL, $limit = NULL, $offset = 0)
 	{
 		if ($status !== NULL)
 		{
 			$this->db->where('status', $status);
 		}
-		return $this->db->order_by('codigo', 'ASC')->get($this->table)->result();
+
+		$this->db->order_by('codigo', 'ASC');
+
+		if ($limit !== NULL)
+		{
+			$this->db->limit($limit, $offset);
+		}
+
+		return $this->db->get($this->table)->result();
+	}
+
+	public function contar($status = NULL)
+	{
+		if ($status !== NULL)
+		{
+			$this->db->where('status', $status);
+		}
+
+		return $this->db->count_all_results($this->table);
 	}
 
 	public function contar_por_status($status)

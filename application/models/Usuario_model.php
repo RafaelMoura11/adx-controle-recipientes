@@ -15,13 +15,31 @@ class Usuario_model extends CI_Model {
 		return $this->db->where('email', $email)->get($this->table)->row();
 	}
 
-	public function all($tipo_usuario = NULL)
+	public function all($tipo_usuario = NULL, $limit = NULL, $offset = 0)
 	{
 		if ($tipo_usuario !== NULL)
 		{
 			$this->db->where('tipo_usuario', $tipo_usuario);
 		}
-		return $this->db->order_by('nome', 'ASC')->get($this->table)->result();
+
+		$this->db->order_by('nome', 'ASC');
+
+		if ($limit !== NULL)
+		{
+			$this->db->limit($limit, $offset);
+		}
+
+		return $this->db->get($this->table)->result();
+	}
+
+	public function contar($tipo_usuario = NULL)
+	{
+		if ($tipo_usuario !== NULL)
+		{
+			$this->db->where('tipo_usuario', $tipo_usuario);
+		}
+
+		return $this->db->count_all_results($this->table);
 	}
 
 	public function create(array $dados)

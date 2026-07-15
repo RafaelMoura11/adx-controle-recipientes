@@ -35,4 +35,9 @@
 			</tbody>
 		</table>
 	</div>
+	<?php if ($links_paginacao): ?>
+	<div class="card-footer">
+		<?php echo $links_paginacao; ?>
+	</div>
+	<?php endif; ?>
 </div>

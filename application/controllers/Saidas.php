@@ -12,10 +12,18 @@ class Saidas extends Operador_Controller {
 		$this->load->model('Usuario_model');
 	}
 
+	const POR_PAGINA = 10;
+
 	public function index()
 	{
+		$pagina_atual = max(1, (int) $this->input->get('pagina', TRUE));
+		$total = $this->Saida_model->contar();
+
+		$this->pagination->initialize(montar_config_paginacao(current_url(), $total, self::POR_PAGINA));
+
 		render_page('saidas/index', array(
-			'saidas' => $this->Saida_model->all(),
+			'saidas' => $this->Saida_model->all(self::POR_PAGINA, ($pagina_atual - 1) * self::POR_PAGINA),
+			'links_paginacao' => $this->pagination->create_links(),
 		));
 	}
 

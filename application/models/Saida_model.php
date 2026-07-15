@@ -15,15 +15,25 @@ class Saida_model extends CI_Model {
 			->row();
 	}
 
-	public function all()
+	public function all($limit = NULL, $offset = 0)
 	{
-		return $this->db->select('saidas.*, motorista.nome AS motorista_nome, rotas.nome AS rota_nome')
+		$this->db->select('saidas.*, motorista.nome AS motorista_nome, rotas.nome AS rota_nome')
 			->from('saidas')
 			->join('usuarios AS motorista', 'motorista.id = saidas.motorista_id')
 			->join('rotas', 'rotas.id = saidas.rota_id', 'left')
-			->order_by('saidas.data_hora_saida', 'DESC')
-			->get()
-			->result();
+			->order_by('saidas.data_hora_saida', 'DESC');
+
+		if ($limit !== NULL)
+		{
+			$this->db->limit($limit, $offset);
+		}
+
+		return $this->db->get()->result();
+	}
+
+	public function contar()
+	{
+		return $this->db->count_all_results('saidas');
 	}
 
 	public function itens_por_ponto($saida_id)

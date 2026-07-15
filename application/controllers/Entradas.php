@@ -10,10 +10,18 @@ class Entradas extends Operador_Controller {
 		$this->load->model('Usuario_model');
 	}
 
+	const POR_PAGINA = 10;
+
 	public function index()
 	{
+		$pagina_atual = max(1, (int) $this->input->get('pagina', TRUE));
+		$total = $this->Entrada_model->contar();
+
+		$this->pagination->initialize(montar_config_paginacao(current_url(), $total, self::POR_PAGINA));
+
 		render_page('entradas/index', array(
-			'entradas' => $this->Entrada_model->all(),
+			'entradas' => $this->Entrada_model->all(self::POR_PAGINA, ($pagina_atual - 1) * self::POR_PAGINA),
+			'links_paginacao' => $this->pagination->create_links(),
 		));
 	}
 

@@ -9,10 +9,18 @@ class Usuarios extends Admin_Controller {
 		$this->load->model('Usuario_model');
 	}
 
+	const POR_PAGINA = 10;
+
 	public function index()
 	{
+		$pagina_atual = max(1, (int) $this->input->get('pagina', TRUE));
+		$total = $this->Usuario_model->contar();
+
+		$this->pagination->initialize(montar_config_paginacao(current_url(), $total, self::POR_PAGINA));
+
 		render_page('usuarios/index', array(
-			'usuarios' => $this->Usuario_model->all(),
+			'usuarios' => $this->Usuario_model->all(NULL, self::POR_PAGINA, ($pagina_atual - 1) * self::POR_PAGINA),
+			'links_paginacao' => $this->pagination->create_links(),
 		));
 	}
 

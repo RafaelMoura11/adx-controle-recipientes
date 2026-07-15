@@ -14,15 +14,25 @@ class Entrada_model extends CI_Model {
 			->row();
 	}
 
-	public function all()
+	public function all($limit = NULL, $offset = 0)
 	{
-		return $this->db->select('entradas.*, motorista.nome AS motorista_nome, registrou.nome AS registrado_por_nome')
+		$this->db->select('entradas.*, motorista.nome AS motorista_nome, registrou.nome AS registrado_por_nome')
 			->from('entradas')
 			->join('usuarios AS registrou', 'registrou.id = entradas.usuario_registrou_id')
 			->join('usuarios AS motorista', 'motorista.id = entradas.motorista_id', 'left')
-			->order_by('entradas.data_hora_entrada', 'DESC')
-			->get()
-			->result();
+			->order_by('entradas.data_hora_entrada', 'DESC');
+
+		if ($limit !== NULL)
+		{
+			$this->db->limit($limit, $offset);
+		}
+
+		return $this->db->get()->result();
+	}
+
+	public function contar()
+	{
+		return $this->db->count_all_results('entradas');
 	}
 
 	public function itens($entrada_id)
