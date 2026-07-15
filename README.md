@@ -1,6 +1,6 @@
 # Controle de Recipientes — ADX (Desafio PHP)
 
-Sistema de controle de entrada e saída de recipientes térmicos utilizados no transporte de alimentos, desenvolvido em **CodeIgniter 3** para o processo seletivo de Desenvolvedor PHP Pleno da ADX.
+Sistema de controle de entrada e saída de recipientes térmicos utilizados no transporte de alimentos, desenvolvido em **CodeIgniter 3**
 
 ## Stack
 
@@ -73,7 +73,7 @@ Cobre a lógica transacional de `Saida_model` e `Entrada_model` (validação de 
 
 ```bash
 docker exec adx_recipientes_app composer cs-check   # PHP-CS-Fixer, PSR-12 (dry-run)
-docker exec adx_recipientes_app composer cs-fix      # aplica a formatacao
+docker exec adx_recipientes_app composer cs-fix      # aplica a formatação
 docker exec adx_recipientes_app composer phpstan     # analise estatica (nivel 1)
 docker exec adx_recipientes_app composer check       # roda os tres gates + PHPUnit
 ```
@@ -142,51 +142,6 @@ phpstan.neon                 Config da analise estatica
 ## Modelo de dados (resumo)
 
 Histórico de movimentações é imutável (`saida_itens` / `entrada_itens`), e o estado atual de cada recipiente fica desnormalizado na própria tabela `recipientes` (atualizado sempre na mesma transação da saída/entrada), evitando reconstruir o histórico inteiro a cada consulta de estoque ou localização atual.
-
-## Checklist do desafio
-
-**Premissas gerais**
-- [x] CodeIgniter 3
-- [x] MySQL/MariaDB
-
-**Cadastros**
-- [x] Login para o ambiente administrador
-- [x] Painel web com formulários de cadastro
-- [x] Usuários administrador / operador / motorista
-- [x] Permissões: administrador (usuários, bloqueio, relatórios), operador (entrada/saída de estoque), motorista (lista de destino e quantidade)
-- [x] Cadastro de rotas com pontos de entrega editáveis
-- [x] Cadastro de recipientes novos no estoque
-
-**API**
-- [x] Endpoints REST para simular saída de recipientes (endereçados, com motorista)
-- [x] Endpoints REST para simular retorno de recipientes ao estoque
-- [x] JSON + Basic Authentication
-
-**Regras de negócio**
-- [x] Saída registra motorista, data/hora, pontos de entrega, quantidade por ponto e identificação de cada recipiente
-- [x] Entrada registra o retorno ao estoque e mantém o histórico completo
-
-**Relatórios (com filtro de data DE/ATÉ)**
-- [x] Relatório 01 — movimentação por local de destino (recipientes da saída, quantidade saída/retornado/em uso)
-- [x] Relatório 02 — devoluções por motorista (recipientes da entrada e quantidade)
-
-**Perguntas que o sistema responde**
-- [x] Quantos recipientes estão em estoque? (Dashboard)
-- [x] Onde está cada recipiente? (Detalhe do recipiente / listagem)
-- [x] Qual motorista realizou a retirada? (Detalhe da saída / histórico do recipiente)
-- [x] Quem registrou a devolução? (Detalhe da entrada / histórico do recipiente)
-- [x] Histórico completo de um recipiente? (Tela de detalhe do recipiente)
-
-**QR Code**
-- [x] Identificador único do recipiente representado por QR Code (gerado sob demanda, referenciando o registro)
-- [x] Leitura via câmera nos formulários de saída/entrada, com fallback de digitação manual
-
-**Diferenciais aplicados**
-- [x] Docker (stack completa: PHP + Apache + MariaDB, com override de produção)
-- [x] Testes automatizados (PHPUnit) na lógica de negócio crítica
-- [x] PHP 8
-- [x] Composer e PSR standards (dependências via Composer, PSR-12 aplicado com PHP-CS-Fixer)
-- [x] CI/CD (GitHub Actions rodando lint + PHPStan + testes a cada push/PR)
 
 ## Notas de decisões técnicas
 
