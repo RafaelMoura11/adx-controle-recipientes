@@ -1,6 +1,6 @@
 # Controle de Recipientes — ADX (Desafio PHP)
 
-Sistema de controle de entrada e saída de recipientes térmicos utilizados no transporte de alimentos, desenvolvido em **CodeIgniter 3**
+Sistema de controle de entrada e saída de recipientes térmicos utilizados no transporte de alimentos, desenvolvido em **CodeIgniter 3**.
 
 ## Stack
 
@@ -74,8 +74,8 @@ Cobre a lógica transacional de `Saida_model` e `Entrada_model` (validação de 
 ```bash
 docker exec adx_recipientes_app composer cs-check   # PHP-CS-Fixer, PSR-12 (dry-run)
 docker exec adx_recipientes_app composer cs-fix      # aplica a formatação
-docker exec adx_recipientes_app composer phpstan     # analise estatica (nivel 1)
-docker exec adx_recipientes_app composer check       # roda os tres gates + PHPUnit
+docker exec adx_recipientes_app composer phpstan     # análise estática (nível 1)
+docker exec adx_recipientes_app composer check       # roda os três gates + PHPUnit
 ```
 
 `application/views` e `application/migrations` ficam fora do escopo do PHPStan: ambos dependem estruturalmente de propriedades mágicas do CI3 (`extract()` nas views, `$this->db` nas migrations) sem ganho real de sinal — o restante da aplicação (controllers, models, core, helpers, tests) fica em nível 1 sem nenhum apontamento.
@@ -97,7 +97,7 @@ curl -u operador1@adx.com:operador123 \
         "motorista_id": 4,
         "rota_id": 1,
         "data_hora_saida": "2026-07-14 08:30:00",
-        "observacoes": "Entrega da manha",
+        "observacoes": "Entrega da manhã",
         "pontos": [
           {"ponto_entrega_id": 1, "recipientes": ["REC-000001", "REC-000002"]}
         ]
@@ -134,8 +134,8 @@ tests/           Testes PHPUnit (bootstrap standalone, sem servidor HTTP)
 docker/app/      Dockerfile + vhost do Apache
 .github/workflows/ci.yml    Pipeline de CI (lint + phpstan + testes)
 docker-compose.yml           Ambiente de desenvolvimento
-docker-compose.prod.yml      Override de producao
-phpstan.neon                 Config da analise estatica
+docker-compose.prod.yml      Override de produção
+phpstan.neon                 Config da análise estática
 .php-cs-fixer.dist.php       Config do PSR-12
 ```
 
