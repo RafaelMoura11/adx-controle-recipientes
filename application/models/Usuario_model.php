@@ -1,72 +1,69 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario_model extends CI_Model {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-	protected $table = 'usuarios';
+class Usuario_model extends CI_Model
+{
+    protected $table = 'usuarios';
 
-	public function find($id)
-	{
-		return $this->db->where('id', $id)->get($this->table)->row();
-	}
+    public function find($id)
+    {
+        return $this->db->where('id', $id)->get($this->table)->row();
+    }
 
-	public function find_by_email($email)
-	{
-		return $this->db->where('email', $email)->get($this->table)->row();
-	}
+    public function find_by_email($email)
+    {
+        return $this->db->where('email', $email)->get($this->table)->row();
+    }
 
-	public function all($tipo_usuario = NULL, $limit = NULL, $offset = 0)
-	{
-		if ($tipo_usuario !== NULL)
-		{
-			$this->db->where('tipo_usuario', $tipo_usuario);
-		}
+    public function all($tipo_usuario = null, $limit = null, $offset = 0)
+    {
+        if ($tipo_usuario !== null) {
+            $this->db->where('tipo_usuario', $tipo_usuario);
+        }
 
-		$this->db->order_by('nome', 'ASC');
+        $this->db->order_by('nome', 'ASC');
 
-		if ($limit !== NULL)
-		{
-			$this->db->limit($limit, $offset);
-		}
+        if ($limit !== null) {
+            $this->db->limit($limit, $offset);
+        }
 
-		return $this->db->get($this->table)->result();
-	}
+        return $this->db->get($this->table)->result();
+    }
 
-	public function contar($tipo_usuario = NULL)
-	{
-		if ($tipo_usuario !== NULL)
-		{
-			$this->db->where('tipo_usuario', $tipo_usuario);
-		}
+    public function contar($tipo_usuario = null)
+    {
+        if ($tipo_usuario !== null) {
+            $this->db->where('tipo_usuario', $tipo_usuario);
+        }
 
-		return $this->db->count_all_results($this->table);
-	}
+        return $this->db->count_all_results($this->table);
+    }
 
-	public function create(array $dados)
-	{
-		$dados['created_at'] = date('Y-m-d H:i:s');
-		$this->db->insert($this->table, $dados);
-		return $this->db->insert_id();
-	}
+    public function create(array $dados)
+    {
+        $dados['created_at'] = date('Y-m-d H:i:s');
+        $this->db->insert($this->table, $dados);
+        return $this->db->insert_id();
+    }
 
-	public function update($id, array $dados)
-	{
-		$dados['updated_at'] = date('Y-m-d H:i:s');
-		return $this->db->where('id', $id)->update($this->table, $dados);
-	}
+    public function update($id, array $dados)
+    {
+        $dados['updated_at'] = date('Y-m-d H:i:s');
+        return $this->db->where('id', $id)->update($this->table, $dados);
+    }
 
-	public function set_situacao($id, $situacao)
-	{
-		return $this->update($id, array('situacao' => $situacao));
-	}
+    public function set_situacao($id, $situacao)
+    {
+        return $this->update($id, array('situacao' => $situacao));
+    }
 
-	public function email_em_uso($email, $ignorar_id = NULL)
-	{
-		$this->db->where('email', $email);
-		if ($ignorar_id !== NULL)
-		{
-			$this->db->where('id !=', $ignorar_id);
-		}
-		return $this->db->get($this->table)->num_rows() > 0;
-	}
+    public function email_em_uso($email, $ignorar_id = null)
+    {
+        $this->db->where('email', $email);
+        if ($ignorar_id !== null) {
+            $this->db->where('id !=', $ignorar_id);
+        }
+        return $this->db->get($this->table)->num_rows() > 0;
+    }
 }

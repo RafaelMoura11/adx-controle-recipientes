@@ -2,7 +2,7 @@
 
 <h1 class="h3 mb-4"><?php echo $editando ? 'Editar usuario' : 'Novo usuario'; ?></h1>
 
-<?php if ( ! empty($erro)): ?>
+<?php if (! empty($erro)): ?>
 	<div class="alert alert-danger"><?php echo htmlspecialchars($erro); ?></div>
 <?php endif; ?>
 

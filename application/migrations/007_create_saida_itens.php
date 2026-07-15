@@ -1,11 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Create_saida_itens extends CI_Migration {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-	public function up()
-	{
-		$this->db->query("
+class Migration_Create_saida_itens extends CI_Migration
+{
+    public function up()
+    {
+        $this->db->query("
 			CREATE TABLE saida_itens (
 				id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 				saida_id INT UNSIGNED NOT NULL,
@@ -23,10 +24,10 @@ class Migration_Create_saida_itens extends CI_Migration {
 				CONSTRAINT fk_saida_itens_recipiente FOREIGN KEY (recipiente_id) REFERENCES recipientes (id)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 		");
-	}
+    }
 
-	public function down()
-	{
-		$this->db->query('DROP TABLE IF EXISTS saida_itens');
-	}
+    public function down()
+    {
+        $this->db->query('DROP TABLE IF EXISTS saida_itens');
+    }
 }

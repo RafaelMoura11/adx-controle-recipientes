@@ -36,13 +36,13 @@
 					<td><?php echo htmlspecialchars($r->descricao); ?></td>
 					<td>
 						<?php
-							$badges = array(
-								'estoque' => 'success',
-								'em_uso' => 'primary',
-								'manutencao' => 'warning',
-								'inativo' => 'secondary',
-							);
-						?>
+                            $badges = array(
+                                'estoque' => 'success',
+                                'em_uso' => 'primary',
+                                'manutencao' => 'warning',
+                                'inativo' => 'secondary',
+                            );
+			    ?>
 						<span class="badge bg-<?php echo $badges[$r->status] ?? 'secondary'; ?>"><?php echo htmlspecialchars($r->status); ?></span>
 					</td>
 					<td><?php echo htmlspecialchars($r->localizacao_atual); ?></td>

@@ -1,6 +1,6 @@
 <h1 class="h3 mb-4">Registrar saida</h1>
 
-<?php if ( ! empty($erro)): ?>
+<?php if (! empty($erro)): ?>
 	<div class="alert alert-danger"><?php echo $erro; ?></div>
 <?php endif; ?>
 

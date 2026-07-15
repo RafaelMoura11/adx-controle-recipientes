@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bootstrap minimo para rodar os Models do CI3 fora do contexto HTTP,
  * sem depender do autoload.php da aplicacao (session/form_validation/etc),
@@ -19,28 +20,28 @@ require_once BASEPATH.'database/DB.php';
  * o suficiente para o padrao "$this->load->model('Xxx_model')" usado
  * dentro dos proprios Models (ex: Saida_model carregando Recipiente_model).
  */
-class Test_CI_Loader {
+class Test_CI_Loader
+{
+    public function model($model, $name = '')
+    {
+        $CI = & get_instance();
+        $name = $name ?: $model;
 
-	public function model($model, $name = '')
-	{
-		$CI =& get_instance();
-		$name = $name ?: $model;
+        if (isset($CI->$name)) {
+            return $this;
+        }
 
-		if (isset($CI->$name))
-		{
-			return $this;
-		}
+        require_once APPPATH.'models/'.$model.'.php';
+        $CI->$name = new $model();
 
-		require_once APPPATH.'models/'.$model.'.php';
-		$CI->$name = new $model();
-
-		return $this;
-	}
+        return $this;
+    }
 }
 
-class Test_CI_Singleton {
-	public $db;
-	public $load;
+class Test_CI_Singleton
+{
+    public $db;
+    public $load;
 }
 
 $GLOBALS['_ci_test_instance'] = new Test_CI_Singleton();
@@ -49,5 +50,5 @@ $GLOBALS['_ci_test_instance']->db = DB();
 
 function &get_instance()
 {
-	return $GLOBALS['_ci_test_instance'];
+    return $GLOBALS['_ci_test_instance'];
 }

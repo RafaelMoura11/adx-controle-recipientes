@@ -33,8 +33,8 @@
 					<dt class="col-sm-4">Status atual</dt>
 					<dd class="col-sm-8">
 						<?php
-							$badges = array('estoque' => 'success', 'em_uso' => 'primary', 'manutencao' => 'warning', 'inativo' => 'secondary');
-						?>
+                            $badges = array('estoque' => 'success', 'em_uso' => 'primary', 'manutencao' => 'warning', 'inativo' => 'secondary');
+	?>
 						<span class="badge bg-<?php echo $badges[$recipiente->status] ?? 'secondary'; ?>"><?php echo htmlspecialchars($recipiente->status); ?></span>
 					</dd>
 

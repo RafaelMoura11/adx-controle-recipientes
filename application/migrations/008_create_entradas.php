@@ -1,11 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Create_entradas extends CI_Migration {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-	public function up()
-	{
-		$this->db->query("
+class Migration_Create_entradas extends CI_Migration
+{
+    public function up()
+    {
+        $this->db->query("
 			CREATE TABLE entradas (
 				id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 				usuario_registrou_id INT UNSIGNED NOT NULL,
@@ -21,10 +22,10 @@ class Migration_Create_entradas extends CI_Migration {
 				CONSTRAINT fk_entradas_motorista FOREIGN KEY (motorista_id) REFERENCES usuarios (id)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 		");
-	}
+    }
 
-	public function down()
-	{
-		$this->db->query('DROP TABLE IF EXISTS entradas');
-	}
+    public function down()
+    {
+        $this->db->query('DROP TABLE IF EXISTS entradas');
+    }
 }

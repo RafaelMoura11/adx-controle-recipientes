@@ -1,11 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Create_saidas extends CI_Migration {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-	public function up()
-	{
-		$this->db->query("
+class Migration_Create_saidas extends CI_Migration
+{
+    public function up()
+    {
+        $this->db->query("
 			CREATE TABLE saidas (
 				id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 				motorista_id INT UNSIGNED NOT NULL,
@@ -26,16 +27,16 @@ class Migration_Create_saidas extends CI_Migration {
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 		");
 
-		// Agora que 'saidas' existe, fecha a referencia pendente de recipientes.saida_atual_id
-		$this->db->query("
+        // Agora que 'saidas' existe, fecha a referencia pendente de recipientes.saida_atual_id
+        $this->db->query('
 			ALTER TABLE recipientes
 			ADD CONSTRAINT fk_recipientes_saida_atual FOREIGN KEY (saida_atual_id) REFERENCES saidas (id)
-		");
-	}
+		');
+    }
 
-	public function down()
-	{
-		$this->db->query('ALTER TABLE recipientes DROP FOREIGN KEY fk_recipientes_saida_atual');
-		$this->db->query('DROP TABLE IF EXISTS saidas');
-	}
+    public function down()
+    {
+        $this->db->query('ALTER TABLE recipientes DROP FOREIGN KEY fk_recipientes_saida_atual');
+        $this->db->query('DROP TABLE IF EXISTS saidas');
+    }
 }

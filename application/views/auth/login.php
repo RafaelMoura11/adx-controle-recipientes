@@ -17,7 +17,7 @@
 						Controle de Recipientes
 					</h1>
 
-					<?php if ( ! empty($erro)): ?>
+					<?php if (! empty($erro)): ?>
 						<div class="alert alert-danger py-2"><?php echo htmlspecialchars($erro); ?></div>
 					<?php endif; ?>
 

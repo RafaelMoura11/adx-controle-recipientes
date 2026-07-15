@@ -27,8 +27,8 @@
 					<td><?php echo $s->rota_nome ? htmlspecialchars($s->rota_nome) : '-'; ?></td>
 					<td>
 						<?php
-							$badges = array('aberta' => 'primary', 'parcialmente_retornada' => 'warning', 'concluida' => 'success');
-						?>
+                            $badges = array('aberta' => 'primary', 'parcialmente_retornada' => 'warning', 'concluida' => 'success');
+			    ?>
 						<span class="badge bg-<?php echo $badges[$s->status] ?? 'secondary'; ?>"><?php echo htmlspecialchars(str_replace('_', ' ', $s->status)); ?></span>
 					</td>
 					<td class="text-end">
