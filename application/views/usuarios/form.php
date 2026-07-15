@@ -26,7 +26,7 @@
 						value="<?php echo htmlspecialchars($editando ? $usuario->email : set_value('email')); ?>">
 				</div>
 				<div class="col-md-4">
-					<label class="form-label">Tipo de usuario</label>
+					<label class="form-label">Tipo de usuário</label>
 					<?php $tipo_atual = $editando ? $usuario->tipo_usuario : set_value('tipo_usuario'); ?>
 					<select name="tipo_usuario" class="form-select" required>
 						<option value="">Selecione</option>

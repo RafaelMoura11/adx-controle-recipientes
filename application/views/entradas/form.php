@@ -10,9 +10,9 @@
 
 			<div class="row g-3 mb-3">
 				<div class="col-md-6">
-					<label class="form-label">Motorista que fez a devolucao</label>
+					<label class="form-label">Motorista que fez a devolução</label>
 					<select name="motorista_id" class="form-select">
-						<option value="">Nao informado</option>
+						<option value="">Não informado</option>
 						<?php foreach ($motoristas as $m): ?>
 							<option value="<?php echo $m->id; ?>"><?php echo htmlspecialchars($m->nome); ?></option>
 						<?php endforeach; ?>
@@ -27,14 +27,14 @@
 					<label class="form-label">Recipientes retornando ao estoque</label>
 					<div class="input-group">
 						<textarea name="recipientes" id="campo-recipientes-entrada" class="form-control campo-recipientes" rows="4"
-							placeholder="Codigos dos recipientes (ex: REC-000001, REC-000002) - separe por virgula, espaco ou linha" required></textarea>
+							placeholder="Códigos dos recipientes (ex: REC-000001, REC-000002) - separe por vírgula, espaço ou linha" required></textarea>
 						<button type="button" class="btn btn-outline-secondary btn-scan-qr" data-target="recipientes">
 							<i class="bi bi-qr-code-scan"></i> Escanear
 						</button>
 					</div>
 				</div>
 				<div class="col-12">
-					<label class="form-label">Observacoes</label>
+					<label class="form-label">Observações</label>
 					<textarea name="observacoes" class="form-control" rows="2"></textarea>
 				</div>
 			</div>

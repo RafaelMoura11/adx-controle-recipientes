@@ -5,9 +5,9 @@
 		<table class="table mb-0 align-middle">
 			<thead class="table-light">
 				<tr>
-					<th>Saida</th>
+					<th>Saída</th>
 					<th>Destino</th>
-					<th>Endereco</th>
+					<th>Endereço</th>
 					<th class="text-end">Quantidade de recipientes</th>
 				</tr>
 			</thead>

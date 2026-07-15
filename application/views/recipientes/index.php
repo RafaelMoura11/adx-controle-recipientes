@@ -11,7 +11,7 @@
 			<a href="<?php echo site_url('recipientes'); ?>" class="btn btn-outline-secondary <?php echo ! $status_filtro ? 'active' : ''; ?>">Todos</a>
 			<a href="<?php echo site_url('recipientes?status=estoque'); ?>" class="btn btn-outline-secondary <?php echo $status_filtro === 'estoque' ? 'active' : ''; ?>">Em estoque</a>
 			<a href="<?php echo site_url('recipientes?status=em_uso'); ?>" class="btn btn-outline-secondary <?php echo $status_filtro === 'em_uso' ? 'active' : ''; ?>">Em uso</a>
-			<a href="<?php echo site_url('recipientes?status=manutencao'); ?>" class="btn btn-outline-secondary <?php echo $status_filtro === 'manutencao' ? 'active' : ''; ?>">Manutencao</a>
+			<a href="<?php echo site_url('recipientes?status=manutencao'); ?>" class="btn btn-outline-secondary <?php echo $status_filtro === 'manutencao' ? 'active' : ''; ?>">Manutenção</a>
 			<a href="<?php echo site_url('recipientes?status=inativo'); ?>" class="btn btn-outline-secondary <?php echo $status_filtro === 'inativo' ? 'active' : ''; ?>">Inativo</a>
 		</div>
 	</div>
@@ -22,11 +22,11 @@
 		<table class="table table-hover mb-0 align-middle">
 			<thead class="table-light">
 				<tr>
-					<th>Codigo</th>
-					<th>Descricao</th>
+					<th>Código</th>
+					<th>Descrição</th>
 					<th>Status</th>
-					<th>Localizacao atual</th>
-					<th class="text-end">Acoes</th>
+					<th>Localização atual</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>

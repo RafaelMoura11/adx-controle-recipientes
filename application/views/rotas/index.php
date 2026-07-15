@@ -11,9 +11,9 @@
 			<thead class="table-light">
 				<tr>
 					<th>Nome</th>
-					<th>Descricao</th>
-					<th>Situacao</th>
-					<th class="text-end">Acoes</th>
+					<th>Descrição</th>
+					<th>Situação</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>

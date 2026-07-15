@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Saidas</h1>
+	<h1 class="h3 mb-0">Saídas</h1>
 	<a href="<?php echo site_url('saidas/novo'); ?>" class="btn btn-primary">
-		<i class="bi bi-box-arrow-up"></i> Registrar saida
+		<i class="bi bi-box-arrow-up"></i> Registrar saída
 	</a>
 </div>
 
@@ -15,7 +15,7 @@
 					<th>Motorista</th>
 					<th>Rota</th>
 					<th>Status</th>
-					<th class="text-end">Acoes</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,7 +37,7 @@
 				</tr>
 			<?php endforeach; ?>
 			<?php if (empty($saidas)): ?>
-				<tr><td colspan="6" class="text-center text-muted py-3">Nenhuma saida registrada.</td></tr>
+				<tr><td colspan="6" class="text-center text-muted py-3">Nenhuma saída registrada.</td></tr>
 			<?php endif; ?>
 			</tbody>
 		</table>

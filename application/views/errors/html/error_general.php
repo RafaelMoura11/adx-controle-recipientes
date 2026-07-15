@@ -15,7 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 		<h1 class="h4 mb-3"><?php echo $heading; ?></h1>
 		<div class="text-muted"><?php echo $message; ?></div>
-		<a href="/" class="btn btn-primary mt-3">Voltar ao inicio</a>
+		<a href="/" class="btn btn-primary mt-3">Voltar ao início</a>
 	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4">Registrar saida</h1>
+<h1 class="h3 mb-4">Registrar saída</h1>
 
 <?php if (! empty($erro)): ?>
 	<div class="alert alert-danger"><?php echo $erro; ?></div>
@@ -10,7 +10,7 @@
 
 			<div class="row g-3 mb-3">
 				<div class="col-md-4">
-					<label class="form-label">Motorista responsavel</label>
+					<label class="form-label">Motorista responsável</label>
 					<select name="motorista_id" class="form-select" required>
 						<option value="">Selecione</option>
 						<?php foreach ($motoristas as $m): ?>
@@ -35,7 +35,7 @@
 						value="<?php echo date('Y-m-d\TH:i'); ?>">
 				</div>
 				<div class="col-12">
-					<label class="form-label">Observacoes</label>
+					<label class="form-label">Observações</label>
 					<textarea name="observacoes" class="form-control" rows="2"></textarea>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 					<h6 class="mt-3">Pontos de entrega - <?php echo htmlspecialchars($rota['nome']); ?></h6>
 
 					<?php if (empty($rota['pontos'])): ?>
-						<p class="text-muted">Esta rota nao possui pontos de entrega ativos.</p>
+						<p class="text-muted">Esta rota não possui pontos de entrega ativos.</p>
 					<?php endif; ?>
 
 					<?php foreach ($rota['pontos'] as $ponto): ?>
@@ -59,7 +59,7 @@
 								</label>
 								<div class="input-group">
 									<textarea name="pontos[<?php echo $ponto->id; ?>]" class="form-control campo-recipientes" rows="2"
-										placeholder="Codigos dos recipientes (ex: REC-000001, REC-000002) - separe por virgula, espaco ou linha"></textarea>
+										placeholder="Códigos dos recipientes (ex: REC-000001, REC-000002) - separe por vírgula, espaço ou linha"></textarea>
 									<button type="button" class="btn btn-outline-secondary btn-scan-qr" data-target="pontos[<?php echo $ponto->id; ?>]">
 										<i class="bi bi-qr-code-scan"></i> Escanear
 									</button>
@@ -71,7 +71,7 @@
 			<?php endforeach; ?>
 
 			<div class="mt-4">
-				<button type="submit" class="btn btn-primary">Registrar saida</button>
+				<button type="submit" class="btn btn-primary">Registrar saída</button>
 				<a href="<?php echo site_url('saidas'); ?>" class="btn btn-link">Cancelar</a>
 			</div>
 

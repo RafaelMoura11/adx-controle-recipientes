@@ -26,17 +26,17 @@
 				<?php else: ?>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('recipientes'); ?>">Recipientes</a></li>
-				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('saidas'); ?>">Saidas</a></li>
+				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('saidas'); ?>">Saídas</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('entradas'); ?>">Entradas</a></li>
 				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('rotas'); ?>">Rotas</a></li>
 				<?php endif; ?>
 				<?php if ($usuario_logado->tipo_usuario === 'administrador'): ?>
-				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('usuarios'); ?>">Usuarios</a></li>
+				<li class="nav-item"><a class="nav-link" href="<?php echo site_url('usuarios'); ?>">Usuários</a></li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Relatorios</a>
+					<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Relatórios</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="<?php echo site_url('relatorios/movimentacao'); ?>">Movimentacao</a></li>
-						<li><a class="dropdown-item" href="<?php echo site_url('relatorios/motoristas'); ?>">Devolucoes por motorista</a></li>
+						<li><a class="dropdown-item" href="<?php echo site_url('relatorios/movimentacao'); ?>">Movimentação</a></li>
+						<li><a class="dropdown-item" href="<?php echo site_url('relatorios/motoristas'); ?>">Devoluções por motorista</a></li>
 					</ul>
 				</li>
 				<?php endif; ?>
@@ -71,7 +71,7 @@
 			</div>
 			<div class="modal-body">
 				<div id="qr-scanner-reader" class="qr-scan-preview"></div>
-				<p class="text-muted small mt-2 mb-0">Aponte a camera para o QR Code do recipiente.</p>
+				<p class="text-muted small mt-2 mb-0">Aponte a câmera para o QR Code do recipiente.</p>
 			</div>
 		</div>
 	</div>

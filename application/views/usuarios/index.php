@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h1 class="h3 mb-0">Usuarios</h1>
+	<h1 class="h3 mb-0">Usuários</h1>
 	<a href="<?php echo site_url('usuarios/novo'); ?>" class="btn btn-primary">
 		<i class="bi bi-plus-lg"></i> Novo usuario
 	</a>
@@ -13,8 +13,8 @@
 					<th>Nome</th>
 					<th>E-mail</th>
 					<th>Tipo</th>
-					<th>Situacao</th>
-					<th class="text-end">Acoes</th>
+					<th>Situação</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,7 +33,7 @@
 					<td class="text-end">
 						<a href="<?php echo site_url('usuarios/editar/'.$usuario->id); ?>" class="btn btn-sm btn-outline-secondary">Editar</a>
 						<?php if ($usuario->situacao === 'ativo'): ?>
-							<a href="<?php echo site_url('usuarios/bloquear/'.$usuario->id); ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Bloquear este usuario?');">Bloquear</a>
+							<a href="<?php echo site_url('usuarios/bloquear/'.$usuario->id); ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Bloquear este usuário?');">Bloquear</a>
 						<?php else: ?>
 							<a href="<?php echo site_url('usuarios/desbloquear/'.$usuario->id); ?>" class="btn btn-sm btn-outline-success">Desbloquear</a>
 						<?php endif; ?>

@@ -13,7 +13,7 @@
 			<div class="row g-3">
 				<?php if ($editando): ?>
 				<div class="col-md-4">
-					<label class="form-label">Codigo</label>
+					<label class="form-label">Código</label>
 					<input type="text" class="form-control" value="<?php echo htmlspecialchars($recipiente->codigo); ?>" disabled>
 				</div>
 				<?php endif; ?>
@@ -21,7 +21,7 @@
 					<label class="form-label">Descricao</label>
 					<input type="text" name="descricao" class="form-control"
 						value="<?php echo htmlspecialchars($editando ? $recipiente->descricao : set_value('descricao')); ?>"
-						placeholder="Ex: Recipiente termico 10L">
+						placeholder="Ex: Recipiente térmico 10L">
 				</div>
 				<?php if ($editando): ?>
 				<div class="col-md-4">
@@ -31,7 +31,7 @@
 							<option value="<?php echo $opcao; ?>" <?php echo $recipiente->status === $opcao ? 'selected' : ''; ?>><?php echo ucfirst(str_replace('_', ' ', $opcao)); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<div class="form-text">Alterar manualmente para "Manutencao"/"Inativo" fora do fluxo normal de saida/entrada.</div>
+					<div class="form-text">Alterar manualmente para "Manutenção"/"Inativo" fora do fluxo normal de saída/entrada.</div>
 				</div>
 				<?php endif; ?>
 			</div>

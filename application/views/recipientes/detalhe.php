@@ -24,10 +24,10 @@
 		<div class="card h-100">
 			<div class="card-body">
 				<dl class="row mb-0">
-					<dt class="col-sm-4">Codigo</dt>
+					<dt class="col-sm-4">Código</dt>
 					<dd class="col-sm-8"><code><?php echo htmlspecialchars($recipiente->codigo); ?></code></dd>
 
-					<dt class="col-sm-4">Descricao</dt>
+					<dt class="col-sm-4">Descrição</dt>
 					<dd class="col-sm-8"><?php echo htmlspecialchars($recipiente->descricao); ?></dd>
 
 					<dt class="col-sm-4">Status atual</dt>
@@ -38,7 +38,7 @@
 						<span class="badge bg-<?php echo $badges[$recipiente->status] ?? 'secondary'; ?>"><?php echo htmlspecialchars($recipiente->status); ?></span>
 					</dd>
 
-					<dt class="col-sm-4">Onde esta</dt>
+					<dt class="col-sm-4">Onde está</dt>
 					<dd class="col-sm-8"><?php echo htmlspecialchars($recipiente->localizacao_atual); ?></dd>
 				</dl>
 			</div>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="card">
-	<div class="card-header">Historico completo de movimentacoes</div>
+	<div class="card-header">Histórico completo de movimentações</div>
 	<div class="table-responsive">
 		<table class="table mb-0 align-middle">
 			<thead class="table-light">
@@ -57,7 +57,7 @@
 					<th>Local</th>
 					<th>Motorista</th>
 					<th>Registrado por</th>
-					<th>Situacao do item</th>
+					<th>Situação do item</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -65,7 +65,7 @@
 				<tr>
 					<td>
 						<?php if ($h->tipo === 'saida'): ?>
-							<span class="badge bg-primary"><i class="bi bi-box-arrow-up"></i> Saida</span>
+							<span class="badge bg-primary"><i class="bi bi-box-arrow-up"></i> Saída</span>
 						<?php else: ?>
 							<span class="badge bg-success"><i class="bi bi-box-arrow-in-down"></i> Entrada</span>
 						<?php endif; ?>
@@ -78,7 +78,7 @@
 				</tr>
 			<?php endforeach; ?>
 			<?php if (empty($historico)): ?>
-				<tr><td colspan="6" class="text-center text-muted py-3">Nenhuma movimentacao registrada ainda.</td></tr>
+				<tr><td colspan="6" class="text-center text-muted py-3">Nenhuma movimentação registrada ainda.</td></tr>
 			<?php endif; ?>
 			</tbody>
 		</table>

@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4">Relatorio de movimentacao de recipientes</h1>
+<h1 class="h3 mb-4">Relatório de movimentação de recipientes</h1>
 
 <div class="card mb-3">
 	<div class="card-body">
@@ -8,7 +8,7 @@
 				<input type="date" name="de" class="form-control" value="<?php echo htmlspecialchars($de); ?>">
 			</div>
 			<div class="col-auto">
-				<label class="form-label mb-0">Ate</label>
+				<label class="form-label mb-0">Até</label>
 				<input type="date" name="ate" class="form-control" value="<?php echo htmlspecialchars($ate); ?>">
 			</div>
 			<div class="col-auto">
@@ -24,9 +24,9 @@
 			<thead class="table-light">
 				<tr>
 					<th>Local de destino</th>
-					<th>Data de saida</th>
-					<th>Recipientes da saida</th>
-					<th class="text-end">Quantidade saida</th>
+					<th>Data de saída</th>
+					<th>Recipientes da saída</th>
+					<th class="text-end">Quantidade saída</th>
 					<th class="text-end">Quantidade retornado</th>
 					<th class="text-end">Recipiente em uso</th>
 				</tr>
@@ -43,7 +43,7 @@
 				</tr>
 			<?php endforeach; ?>
 			<?php if (empty($linhas)): ?>
-				<tr><td colspan="6" class="text-center text-muted py-4">Nenhuma movimentacao no periodo selecionado.</td></tr>
+				<tr><td colspan="6" class="text-center text-muted py-4">Nenhuma movimentação no período selecionado.</td></tr>
 			<?php endif; ?>
 			</tbody>
 		</table>

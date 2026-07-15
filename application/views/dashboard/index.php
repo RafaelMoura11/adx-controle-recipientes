@@ -20,7 +20,7 @@
 	<div class="col-md-3">
 		<div class="card card-kpi text-bg-warning">
 			<div class="card-body">
-				<div class="text-uppercase small">Em manutencao</div>
+				<div class="text-uppercase small">Em manutenção</div>
 				<div class="display-6"><?php echo (int) $total_manutencao; ?></div>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 	<div class="col-md-3">
 		<div class="card card-kpi text-bg-secondary">
 			<div class="card-body">
-				<div class="text-uppercase small">Saidas / Entradas hoje</div>
+				<div class="text-uppercase small">Saídas / Entradas hoje</div>
 				<div class="display-6"><?php echo (int) $saidas_hoje; ?> / <?php echo (int) $entradas_hoje; ?></div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 	</div>
 	<div class="col-md-4">
 		<a href="<?php echo site_url('saidas/novo'); ?>" class="btn btn-outline-dark w-100 py-3">
-			<i class="bi bi-box-arrow-up"></i> Registrar Saida
+			<i class="bi bi-box-arrow-up"></i> Registrar Saída
 		</a>
 	</div>
 	<div class="col-md-4">

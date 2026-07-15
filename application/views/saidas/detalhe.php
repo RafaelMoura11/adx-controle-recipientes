@@ -1,4 +1,4 @@
-<h1 class="h3 mb-4">Saida #<?php echo (int) $saida->id; ?></h1>
+<h1 class="h3 mb-4">Saída #<?php echo (int) $saida->id; ?></h1>
 
 <div class="card mb-4">
 	<div class="card-body">
@@ -9,7 +9,7 @@
 			<dt class="col-sm-3">Rota</dt>
 			<dd class="col-sm-9"><?php echo $saida->rota_nome ? htmlspecialchars($saida->rota_nome) : '-'; ?></dd>
 
-			<dt class="col-sm-3">Data/hora da saida</dt>
+			<dt class="col-sm-3">Data/hora da saída</dt>
 			<dd class="col-sm-9"><?php echo date('d/m/Y H:i', strtotime($saida->data_hora_saida)); ?></dd>
 
 			<dt class="col-sm-3">Registrado por</dt>
@@ -22,7 +22,7 @@
 			</dd>
 
 			<?php if ($saida->observacoes): ?>
-			<dt class="col-sm-3">Observacoes</dt>
+			<dt class="col-sm-3">Observações</dt>
 			<dd class="col-sm-9"><?php echo nl2br(htmlspecialchars($saida->observacoes)); ?></dd>
 			<?php endif; ?>
 		</dl>
@@ -30,14 +30,14 @@
 </div>
 
 <div class="card">
-	<div class="card-header">Recipientes desta saida</div>
+	<div class="card-header">Recipientes desta saída</div>
 	<div class="table-responsive">
 		<table class="table mb-0 align-middle">
 			<thead class="table-light">
 				<tr>
-					<th>Codigo</th>
+					<th>Código</th>
 					<th>Ponto de entrega</th>
-					<th>Situacao</th>
+					<th>Situação</th>
 				</tr>
 			</thead>
 			<tbody>

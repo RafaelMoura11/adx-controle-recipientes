@@ -13,7 +13,7 @@
 			<dd class="col-sm-9"><?php echo htmlspecialchars($entrada->registrado_por_nome); ?></dd>
 
 			<?php if ($entrada->observacoes): ?>
-			<dt class="col-sm-3">Observacoes</dt>
+			<dt class="col-sm-3">Observações</dt>
 			<dd class="col-sm-9"><?php echo nl2br(htmlspecialchars($entrada->observacoes)); ?></dd>
 			<?php endif; ?>
 		</dl>
@@ -26,7 +26,7 @@
 		<table class="table mb-0 align-middle">
 			<thead class="table-light">
 				<tr>
-					<th>Codigo</th>
+					<th>Código</th>
 				</tr>
 			</thead>
 			<tbody>

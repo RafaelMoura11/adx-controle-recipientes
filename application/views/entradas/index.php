@@ -14,7 +14,7 @@
 					<th>Data/Hora</th>
 					<th>Motorista (devolveu)</th>
 					<th>Registrado por</th>
-					<th class="text-end">Acoes</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>

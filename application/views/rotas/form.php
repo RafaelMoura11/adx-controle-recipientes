@@ -17,7 +17,7 @@
 						value="<?php echo htmlspecialchars($editando ? $rota->nome : set_value('nome')); ?>">
 				</div>
 				<div class="col-md-6">
-					<label class="form-label">Descricao</label>
+					<label class="form-label">Descrição</label>
 					<input type="text" name="descricao" class="form-control"
 						value="<?php echo htmlspecialchars($editando ? $rota->descricao : set_value('descricao')); ?>">
 				</div>
@@ -49,9 +49,9 @@
 				<tr>
 					<th>Ordem</th>
 					<th>Nome</th>
-					<th>Endereco</th>
-					<th>Situacao</th>
-					<th class="text-end">Acoes</th>
+					<th>Endereço</th>
+					<th>Situação</th>
+					<th class="text-end">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -93,7 +93,7 @@
 					<input type="text" name="nome" class="form-control" placeholder="Nome do ponto" required>
 				</div>
 				<div class="col-md-6">
-					<input type="text" name="endereco" class="form-control" placeholder="Endereco (opcional)">
+					<input type="text" name="endereco" class="form-control" placeholder="Endereço (opcional)">
 				</div>
 				<div class="col-md-2">
 					<button type="submit" class="btn btn-primary w-100">Adicionar</button>
