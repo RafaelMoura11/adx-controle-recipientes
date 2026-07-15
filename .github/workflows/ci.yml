@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  quality-and-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mariadb:10.11
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: adx_recipientes
+          MYSQL_USER: adx
+          MYSQL_PASSWORD: adx123
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      CI_ENV: testing
+      DB_HOST: 127.0.0.1
+      DB_USER: adx
+      DB_PASSWORD: adx123
+      DB_DATABASE: adx_recipientes
+      CI_ENCRYPTION_KEY: ci-pipeline-chave-de-teste
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar PHP 8.1
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mysqli, pdo_mysql, gd, zip, mbstring
+          coverage: none
+
+      - name: Instalar dependencias (Composer)
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Rodar migrations + seed
+        run: php public/index.php cli migrate
+
+      - name: Estilo de codigo (PSR-12 / PHP-CS-Fixer)
+        run: composer cs-check
+
+      - name: Analise estatica (PHPStan)
+        run: composer phpstan
+
+      - name: Testes automatizados (PHPUnit)
+        run: composer test
