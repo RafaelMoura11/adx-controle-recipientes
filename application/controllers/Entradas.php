@@ -41,7 +41,7 @@ class Entradas extends Operador_Controller {
 		$motorista_id = $this->input->post('motorista_id', TRUE) ?: NULL;
 		$data_hora_entrada = str_replace('T', ' ', $this->input->post('data_hora_entrada', TRUE)).':00';
 		$observacoes = $this->input->post('observacoes', TRUE);
-		$codigos = $this->_parse_codigos($this->input->post('recipientes', TRUE));
+		$codigos = parse_codigos_recipientes($this->input->post('recipientes', TRUE));
 
 		$resultado = $this->Entrada_model->registrar_entrada(
 			$motorista_id,
@@ -80,20 +80,4 @@ class Entradas extends Operador_Controller {
 		));
 	}
 
-	private function _parse_codigos($texto)
-	{
-		$partes = preg_split('/[\s,;]+/', trim((string) $texto));
-		$codigos = array();
-
-		foreach ($partes as $parte)
-		{
-			$parte = strtoupper(trim($parte));
-			if ($parte !== '')
-			{
-				$codigos[] = $parte;
-			}
-		}
-
-		return $codigos;
-	}
 }

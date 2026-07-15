@@ -47,7 +47,7 @@ class Saidas extends Operador_Controller {
 		{
 			foreach ($pontos_post as $ponto_entrega_id => $codigos_texto)
 			{
-				$codigos = $this->_parse_codigos($codigos_texto);
+				$codigos = parse_codigos_recipientes($codigos_texto);
 
 				if ( ! empty($codigos))
 				{
@@ -92,23 +92,6 @@ class Saidas extends Operador_Controller {
 			'saida' => $saida,
 			'itens' => $this->Saida_model->itens_por_ponto($id),
 		));
-	}
-
-	private function _parse_codigos($texto)
-	{
-		$partes = preg_split('/[\s,;]+/', trim((string) $texto));
-		$codigos = array();
-
-		foreach ($partes as $parte)
-		{
-			$parte = strtoupper(trim($parte));
-			if ($parte !== '')
-			{
-				$codigos[] = $parte;
-			}
-		}
-
-		return $codigos;
 	}
 
 	private function _dados_formulario($saida = NULL, $erro = NULL)
