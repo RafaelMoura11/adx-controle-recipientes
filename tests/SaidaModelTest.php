@@ -63,7 +63,7 @@ final class SaidaModelTest extends ModelTestCase
         );
 
         $this->assertFalse($resultado['sucesso']);
-        $this->assertStringContainsString('nao esta em estoque', $resultado['erro']);
+        $this->assertStringContainsString('não está em estoque', $resultado['erro']);
     }
 
     public function test_rejeita_recipiente_inexistente()
@@ -84,7 +84,7 @@ final class SaidaModelTest extends ModelTestCase
         );
 
         $this->assertFalse($resultado['sucesso']);
-        $this->assertStringContainsString('nao encontrado', $resultado['erro']);
+        $this->assertStringContainsString('não encontrado', $resultado['erro']);
     }
 
     public function test_rejeita_codigos_duplicados_na_mesma_saida()

@@ -39,7 +39,7 @@ class Auth extends CI_Controller
 
                 if ($usuario && password_verify($senha, $usuario->senha_hash)) {
                     if ($usuario->situacao !== 'ativo') {
-                        $erro = 'Este usuario esta bloqueado. Fale com um administrador.';
+                        $erro = 'Este usuário está bloqueado. Fale com um administrador.';
                     } else {
                         $this->session->set_userdata(array(
                             'usuario_id' => $usuario->id,
@@ -49,7 +49,7 @@ class Auth extends CI_Controller
                         redirect($usuario->tipo_usuario === 'motorista' ? 'motorista' : 'dashboard');
                     }
                 } else {
-                    $erro = 'E-mail ou senha invalidos.';
+                    $erro = 'E-mail ou senha inválidos.';
                 }
             }
         }

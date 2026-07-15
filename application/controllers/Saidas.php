@@ -85,7 +85,7 @@ class Saidas extends Operador_Controller
             return;
         }
 
-        $this->session->set_flashdata('sucesso', 'Saida registrada com sucesso.');
+        $this->session->set_flashdata('sucesso', 'Saída registrada com sucesso.');
         redirect('saidas/detalhe/'.$resultado['saida_id']);
     }
 

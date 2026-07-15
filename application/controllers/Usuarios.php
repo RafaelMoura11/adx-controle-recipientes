@@ -51,7 +51,7 @@ class Usuarios extends Admin_Controller
         $email = $this->input->post('email', true);
 
         if ($this->Usuario_model->email_em_uso($email)) {
-            render_page('usuarios/form', array('usuario' => null, 'erro' => 'Ja existe um usuario com este e-mail.'));
+            render_page('usuarios/form', array('usuario' => null, 'erro' => 'Já existe um usuário com este e-mail.'));
             return;
         }
 
@@ -65,7 +65,7 @@ class Usuarios extends Admin_Controller
             'situacao' => 'ativo',
         ));
 
-        $this->session->set_flashdata('sucesso', 'Usuario cadastrado com sucesso.');
+        $this->session->set_flashdata('sucesso', 'Usuário cadastrado com sucesso.');
         redirect('usuarios');
     }
 
@@ -100,7 +100,7 @@ class Usuarios extends Admin_Controller
         $email = $this->input->post('email', true);
 
         if ($this->Usuario_model->email_em_uso($email, $id)) {
-            render_page('usuarios/form', array('usuario' => $usuario, 'erro' => 'Ja existe um usuario com este e-mail.'));
+            render_page('usuarios/form', array('usuario' => $usuario, 'erro' => 'Já existe um usuário com este e-mail.'));
             return;
         }
 
@@ -119,21 +119,21 @@ class Usuarios extends Admin_Controller
 
         $this->Usuario_model->update($id, $dados);
 
-        $this->session->set_flashdata('sucesso', 'Usuario atualizado com sucesso.');
+        $this->session->set_flashdata('sucesso', 'Usuário atualizado com sucesso.');
         redirect('usuarios');
     }
 
     public function bloquear($id)
     {
         $this->Usuario_model->set_situacao($id, 'bloqueado');
-        $this->session->set_flashdata('sucesso', 'Usuario bloqueado.');
+        $this->session->set_flashdata('sucesso', 'Usuário bloqueado.');
         redirect('usuarios');
     }
 
     public function desbloquear($id)
     {
         $this->Usuario_model->set_situacao($id, 'ativo');
-        $this->session->set_flashdata('sucesso', 'Usuario desbloqueado.');
+        $this->session->set_flashdata('sucesso', 'Usuário desbloqueado.');
         redirect('usuarios');
     }
 }

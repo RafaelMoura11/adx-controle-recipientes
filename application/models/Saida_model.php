@@ -77,7 +77,7 @@ class Saida_model extends MY_Model
 
         if (count($todos_codigos) !== count(array_unique($todos_codigos))) {
             $this->db->trans_rollback();
-            return array('sucesso' => false, 'saida_id' => null, 'erro' => 'Ha recipientes duplicados na saida.');
+            return array('sucesso' => false, 'saida_id' => null, 'erro' => 'Há recipientes duplicados na saída.');
         }
 
         $recipientes_por_codigo = array();
@@ -86,12 +86,12 @@ class Saida_model extends MY_Model
 
             if (! $recipiente) {
                 $this->db->trans_rollback();
-                return array('sucesso' => false, 'saida_id' => null, 'erro' => "Recipiente {$codigo} nao encontrado.");
+                return array('sucesso' => false, 'saida_id' => null, 'erro' => "Recipiente {$codigo} não encontrado.");
             }
 
             if ($recipiente->status !== 'estoque') {
                 $this->db->trans_rollback();
-                return array('sucesso' => false, 'saida_id' => null, 'erro' => "Recipiente {$codigo} nao esta em estoque (status atual: {$recipiente->status}).");
+                return array('sucesso' => false, 'saida_id' => null, 'erro' => "Recipiente {$codigo} não está em estoque (status atual: {$recipiente->status}).");
             }
 
             $recipientes_por_codigo[$codigo] = $recipiente;
@@ -140,7 +140,7 @@ class Saida_model extends MY_Model
 
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
-            return array('sucesso' => false, 'saida_id' => null, 'erro' => 'Erro ao gravar a saida no banco de dados.');
+            return array('sucesso' => false, 'saida_id' => null, 'erro' => 'Erro ao gravar a saída no banco de dados.');
         }
 
         $this->db->trans_commit();

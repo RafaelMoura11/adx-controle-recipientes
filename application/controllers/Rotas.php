@@ -108,7 +108,7 @@ class Rotas extends Operador_Controller
 
             $this->session->set_flashdata('sucesso', 'Ponto de entrega adicionado.');
         } else {
-            $this->session->set_flashdata('erro', 'Informe um nome valido para o ponto de entrega.');
+            $this->session->set_flashdata('erro', 'Informe um nome válido para o ponto de entrega.');
         }
 
         redirect('rotas/editar/'.$rota_id);
@@ -132,7 +132,7 @@ class Rotas extends Operador_Controller
 
             $this->session->set_flashdata('sucesso', 'Ponto de entrega atualizado.');
         } else {
-            $this->session->set_flashdata('erro', 'Informe um nome valido para o ponto de entrega.');
+            $this->session->set_flashdata('erro', 'Informe um nome válido para o ponto de entrega.');
         }
 
         redirect('rotas/editar/'.$ponto->rota_id);

@@ -112,7 +112,7 @@ final class EntradaModelTest extends ModelTestCase
         );
 
         $this->assertFalse($resultado['sucesso']);
-        $this->assertStringContainsString('nao esta em uso', $resultado['erro']);
+        $this->assertStringContainsString('não está em uso', $resultado['erro']);
     }
 
     public function test_rejeita_recipiente_inexistente()
@@ -129,6 +129,6 @@ final class EntradaModelTest extends ModelTestCase
         );
 
         $this->assertFalse($resultado['sucesso']);
-        $this->assertStringContainsString('nao encontrado', $resultado['erro']);
+        $this->assertStringContainsString('não encontrado', $resultado['erro']);
     }
 }

@@ -69,7 +69,7 @@ class Entrada_model extends MY_Model
 
         if (count($codigos) !== count(array_unique($codigos))) {
             $this->db->trans_rollback();
-            return array('sucesso' => false, 'entrada_id' => null, 'erro' => 'Ha recipientes duplicados na entrada.');
+            return array('sucesso' => false, 'entrada_id' => null, 'erro' => 'Há recipientes duplicados na entrada.');
         }
 
         $saida_itens_por_codigo = array();
@@ -80,12 +80,12 @@ class Entrada_model extends MY_Model
 
             if (! $recipiente) {
                 $this->db->trans_rollback();
-                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} nao encontrado.");
+                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} não encontrado.");
             }
 
             if ($recipiente->status !== 'em_uso') {
                 $this->db->trans_rollback();
-                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} nao esta em uso (status atual: {$recipiente->status}).");
+                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} não está em uso (status atual: {$recipiente->status}).");
             }
 
             $saida_item = $this->db->where('recipiente_id', $recipiente->id)
@@ -97,7 +97,7 @@ class Entrada_model extends MY_Model
 
             if (! $saida_item) {
                 $this->db->trans_rollback();
-                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} nao possui saida em aberto.");
+                return array('sucesso' => false, 'entrada_id' => null, 'erro' => "Recipiente {$codigo} não possui saída em aberto.");
             }
 
             $recipientes_por_codigo[$codigo] = $recipiente;

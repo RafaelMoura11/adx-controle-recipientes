@@ -14,7 +14,7 @@ class Migrate extends CI_Controller
         parent::__construct();
 
         if (! $this->input->is_cli_request()) {
-            show_error('Este controller so pode ser executado via linha de comando.', 403);
+            show_error('Este controller só pode ser executado via linha de comando.', 403);
         }
 
         $this->load->library('migration');

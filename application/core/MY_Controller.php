@@ -60,7 +60,7 @@ class Auth_Controller extends CI_Controller
     protected function exigir_tipo(array $tipos_permitidos)
     {
         if (! in_array($this->usuario_logado->tipo_usuario, $tipos_permitidos, true)) {
-            show_error('Voce nao tem permissao para acessar esta pagina.', 403, 'Acesso negado');
+            show_error('Você não tem permissão para acessar esta página.', 403, 'Acesso negado');
         }
     }
 }
