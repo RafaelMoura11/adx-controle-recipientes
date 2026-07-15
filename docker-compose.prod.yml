@@ -1,0 +1,9 @@
+services:
+  app:
+    environment:
+      CI_ENV: production
+    volumes: !reset []
+
+  adminer:
+    profiles:
+      - tools

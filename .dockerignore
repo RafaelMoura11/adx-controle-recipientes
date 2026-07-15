@@ -1,0 +1,13 @@
+.git
+.github
+vendor
+tests
+phpunit.xml
+.phpunit.result.cache
+.env
+application/cache/*
+!application/cache/index.html
+application/logs/*
+!application/logs/index.html
+docker-compose*.yml
+README.md
