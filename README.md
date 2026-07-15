@@ -9,6 +9,7 @@ Sistema de controle de entrada e saída de recipientes térmicos utilizados no t
 - **Front-end**: Views server-side do CI3 + Bootstrap 5
 - **QR Code**: geração via [`endroid/qr-code`](https://github.com/endroid/qr-code) (servidor) e leitura via câmera com [`html5-qrcode`](https://github.com/mebjas/html5-qrcode) (cliente)
 - **Testes**: PHPUnit 10
+- **Qualidade**: PHP-CS-Fixer (PSR-12) + PHPStan (nível 1) + GitHub Actions
 - **Infraestrutura**: 100% Docker (aplicação + banco), sem dependências instaladas na máquina host além do Docker
 
 ## Subindo o ambiente
@@ -39,6 +40,14 @@ docker exec adx_recipientes_app php public/index.php cli migrate
 
 Acesse **http://localhost:8080/login**.
 
+### Modo produção
+
+O `docker-compose.yml` padrão é voltado para desenvolvimento (bind mount do código para hot-reload, `CI_ENV=development`, Adminer exposto). Para simular um ambiente de produção — sem bind mount (usa o código e o `vendor/` já instalados com `--no-dev` na própria imagem), `CI_ENV=production` (desliga `display_errors`) e sem Adminer:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+```
+
 ## Usuários de teste (seed)
 
 | Perfil | E-mail | Senha |
@@ -59,6 +68,19 @@ docker exec adx_recipientes_app php vendor/bin/phpunit --testdox
 ```
 
 Cobre a lógica transacional de `Saida_model` e `Entrada_model` (validação de estoque, duplicidade, recipiente inexistente, recálculo de status da saída). Cada teste roda dentro de uma transação com rollback automático — não deixa dados residuais no banco de desenvolvimento.
+
+## Qualidade de código
+
+```bash
+docker exec adx_recipientes_app composer cs-check   # PHP-CS-Fixer, PSR-12 (dry-run)
+docker exec adx_recipientes_app composer cs-fix      # aplica a formatacao
+docker exec adx_recipientes_app composer phpstan     # analise estatica (nivel 1)
+docker exec adx_recipientes_app composer check       # roda os tres gates + PHPUnit
+```
+
+`application/views` e `application/migrations` ficam fora do escopo do PHPStan: ambos dependem estruturalmente de propriedades mágicas do CI3 (`extract()` nas views, `$this->db` nas migrations) sem ganho real de sinal — o restante da aplicação (controllers, models, core, helpers, tests) fica em nível 1 sem nenhum apontamento.
+
+Essas mesmas verificações rodam automaticamente no CI (GitHub Actions, `.github/workflows/ci.yml`) a cada push/PR, junto com a suíte PHPUnit contra um MariaDB de serviço.
 
 ## API REST
 
@@ -110,7 +132,11 @@ system/          Core do CodeIgniter 3.1.13 (oficial, não modificado)
 public/          Webroot (index.php, assets)
 tests/           Testes PHPUnit (bootstrap standalone, sem servidor HTTP)
 docker/app/      Dockerfile + vhost do Apache
-docker-compose.yml
+.github/workflows/ci.yml    Pipeline de CI (lint + phpstan + testes)
+docker-compose.yml           Ambiente de desenvolvimento
+docker-compose.prod.yml      Override de producao
+phpstan.neon                 Config da analise estatica
+.php-cs-fixer.dist.php       Config do PSR-12
 ```
 
 ## Modelo de dados (resumo)
@@ -156,12 +182,17 @@ Histórico de movimentações é imutável (`saida_itens` / `entrada_itens`), e 
 - [x] Leitura via câmera nos formulários de saída/entrada, com fallback de digitação manual
 
 **Diferenciais aplicados**
-- [x] Docker (stack completa: PHP + Apache + MariaDB)
+- [x] Docker (stack completa: PHP + Apache + MariaDB, com override de produção)
 - [x] Testes automatizados (PHPUnit) na lógica de negócio crítica
 - [x] PHP 8
+- [x] Composer e PSR standards (dependências via Composer, PSR-12 aplicado com PHP-CS-Fixer)
+- [x] CI/CD (GitHub Actions rodando lint + PHPStan + testes a cada push/PR)
 
 ## Notas de decisões técnicas
 
 - **PHP 8.1 via Docker** (não 8.4 do host): é a última versão oficialmente suportada pelo CodeIgniter 3.1.13, evitando ruído de deprecations/incompatibilidades e tornando a avaliação reproduzível com um único `docker compose up`.
+- **`composer.json` fixa `config.platform.php` em `8.1.34`**: sem isso, rodar `composer require`/`update` a partir de um host com outra versão de PHP instalada resolveria dependências incompatíveis com o runtime real do container (foi um bug real encontrado durante o desenvolvimento).
 - **Nenhuma tabela sofre DELETE físico** (apenas flags de status/ativo) para preservar a integridade do histórico de movimentações.
 - **`Recipiente_model::recalcular_status()`** reconstrói o estado atual a partir do histórico imutável — útil como correção manual caso algo grave fora do fluxo normal altere o estado desnormalizado.
+- **Listagens paginadas** (Recipientes, Usuários, Saídas, Entradas) via `CI_Pagination`, 10 itens por página, preservando filtros existentes na querystring.
+- **`application/core/MY_Model.php`** é a base de todos os Models (em vez de `CI_Model` diretamente) — documenta via PHPDoc as propriedades mágicas do CI3 (`$db`, `$load`) para que o PHPStan consiga tipar de verdade.
