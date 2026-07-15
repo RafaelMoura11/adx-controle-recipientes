@@ -5,6 +5,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 
+/**
+ * @property Recipiente_model $Recipiente_model
+ */
 class Recipientes extends Operador_Controller
 {
     public function __construct()

@@ -2,6 +2,15 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property CI_DB_mysqli_driver $db
+ * @property CI_Loader $load
+ * @property CI_Session $session
+ * @property CI_Input $input
+ * @property CI_Output $output
+ * @property CI_Form_validation $form_validation
+ * @property Usuario_model $Usuario_model
+ */
 class Auth extends CI_Controller
 {
     public function __construct()

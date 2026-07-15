@@ -2,6 +2,12 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Saida_model $Saida_model
+ * @property Rota_model $Rota_model
+ * @property PontoEntrega_model $PontoEntrega_model
+ * @property Usuario_model $Usuario_model
+ */
 class Saidas extends Operador_Controller
 {
     public function __construct()

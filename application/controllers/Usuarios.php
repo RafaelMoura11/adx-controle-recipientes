@@ -2,6 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Usuario_model $Usuario_model
+ */
 class Usuarios extends Admin_Controller
 {
     public function __construct()

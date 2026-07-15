@@ -2,6 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Saida_model $Saida_model
+ */
 class Saidas extends API_Controller
 {
     public function __construct()

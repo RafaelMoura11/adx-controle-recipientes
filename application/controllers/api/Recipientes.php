@@ -2,6 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Recipiente_model $Recipiente_model
+ */
 class Recipientes extends API_Controller
 {
     public function __construct()

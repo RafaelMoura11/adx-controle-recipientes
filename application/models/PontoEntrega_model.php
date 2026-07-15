@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PontoEntrega_model extends CI_Model
+class PontoEntrega_model extends MY_Model
 {
     protected $table = 'pontos_entrega';
 

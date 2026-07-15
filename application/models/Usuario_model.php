@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Usuario_model extends CI_Model
+class Usuario_model extends MY_Model
 {
     protected $table = 'usuarios';
 

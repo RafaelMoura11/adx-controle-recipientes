@@ -2,6 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Rota_model $Rota_model
+ * @property PontoEntrega_model $PontoEntrega_model
+ */
 class Rotas extends Operador_Controller
 {
     public function __construct()

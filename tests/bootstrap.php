@@ -14,6 +14,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 require_once BASEPATH.'core/Common.php';
 require_once BASEPATH.'core/Model.php';
 require_once BASEPATH.'database/DB.php';
+require_once APPPATH.'core/MY_Model.php';
 
 /**
  * Loader minimo: carrega e memoiza Models na instancia global de teste,

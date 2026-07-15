@@ -2,6 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Entrada_model $Entrada_model
+ * @property Usuario_model $Usuario_model
+ */
 class Entradas extends Operador_Controller
 {
     public function __construct()

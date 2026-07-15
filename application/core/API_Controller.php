@@ -6,6 +6,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * Base para os endpoints REST (application/controllers/api/*).
  * Autentica via HTTP Basic Auth contra a tabela usuarios e responde
  * sempre em JSON, no formato {"sucesso": bool, "dados": ..., "mensagem": "..."}.
+ *
+ * @property CI_DB_mysqli_driver $db
+ * @property CI_Loader $load
+ * @property CI_Input $input
+ * @property CI_Output $output
+ * @property Usuario_model $Usuario_model
  */
 class API_Controller extends CI_Controller
 {

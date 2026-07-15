@@ -2,7 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Saida_model extends CI_Model
+/**
+ * @property Recipiente_model $Recipiente_model
+ */
+class Saida_model extends MY_Model
 {
     public function find($id)
     {

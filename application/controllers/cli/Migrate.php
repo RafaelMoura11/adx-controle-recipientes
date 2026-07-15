@@ -2,6 +2,11 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property CI_Input $input
+ * @property CI_Loader $load
+ * @property CI_Migration $migration
+ */
 class Migrate extends CI_Controller
 {
     public function __construct()

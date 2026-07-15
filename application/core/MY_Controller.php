@@ -10,7 +10,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once __DIR__.'/API_Controller.php';
 
 /**
+ * MY_Controller.php e requerido pelo boot do CI3 antes de CI_Model existir
+ * (que so e carregado sob demanda via $this->load->model()). Garante a
+ * ordem certa antes de MY_Model.php declarar "extends CI_Model".
+ */
+require_once BASEPATH.'core/Model.php';
+require_once __DIR__.'/MY_Model.php';
+
+/**
  * Base para qualquer tela do painel que exija usuario autenticado e ativo.
+ *
+ * @property CI_DB_mysqli_driver $db
+ * @property CI_Loader $load
+ * @property CI_Session $session
+ * @property CI_Input $input
+ * @property CI_Output $output
+ * @property CI_Form_validation $form_validation
+ * @property CI_Pagination $pagination
+ * @property Usuario_model $Usuario_model
  */
 class Auth_Controller extends CI_Controller
 {

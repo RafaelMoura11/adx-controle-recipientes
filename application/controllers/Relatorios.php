@@ -2,6 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Relatorio_model $Relatorio_model
+ */
 class Relatorios extends Admin_Controller
 {
     public function __construct()

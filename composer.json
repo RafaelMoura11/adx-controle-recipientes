@@ -9,12 +9,19 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.2",
         "phpunit/phpunit": "^10.5"
     },
     "scripts": {
         "test": "phpunit",
         "cs-check": "php-cs-fixer fix --dry-run --diff",
-        "cs-fix": "php-cs-fixer fix"
+        "cs-fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse",
+        "check": [
+            "@cs-check",
+            "@phpstan",
+            "@test"
+        ]
     },
     "config": {
         "optimize-autoloader": true,

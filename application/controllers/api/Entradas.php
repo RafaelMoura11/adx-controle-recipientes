@@ -2,6 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @property Entrada_model $Entrada_model
+ */
 class Entradas extends API_Controller
 {
     public function __construct()

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Recipiente_model extends CI_Model
+class Recipiente_model extends MY_Model
 {
     protected $table = 'recipientes';
 

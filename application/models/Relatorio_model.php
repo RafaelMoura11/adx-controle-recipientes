@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Relatorio_model extends CI_Model
+class Relatorio_model extends MY_Model
 {
     /**
      * Relatorio 01 - Movimentacao de recipientes por local de destino,
